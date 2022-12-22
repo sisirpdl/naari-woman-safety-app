@@ -73,8 +73,11 @@ class _SafeHomeState extends State<SafeHome> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       ListTile(
-                        title: Text("Get Home Safe"),
-                        subtitle: Text("Share Location Periodically"),
+                        title: Text("Travel SAFE"),
+                        subtitle: Text(
+                          "Tap here to share your location with your trusted contacts.",
+                          // style: TextStyle(color: Colors.redAccent[700])
+                        ),
                       ),
                       Visibility(
                         visible: getHomeSafeActivated,

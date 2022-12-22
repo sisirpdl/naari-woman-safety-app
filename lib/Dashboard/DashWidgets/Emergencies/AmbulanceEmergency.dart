@@ -15,7 +15,7 @@ class AmbulanceEmergency extends StatelessWidget {
         ),
         child: InkWell(
           onTap: () {
-            _callNumber("1122");
+            _callNumber("102");
           },
           child: Container(
             height: 180,
@@ -26,9 +26,8 @@ class AmbulanceEmergency extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Color(0xFFFD8080),
-                  Color(0xFFFB8580),
-                  Color(0xFFFBD079),
+                  Color.fromRGBO(255, 0, 0, 1),
+                  Color.fromRGBO(143, 0, 255, 1)
                 ],
               ),
             ),
@@ -51,14 +50,14 @@ class AmbulanceEmergency extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Ambulance",
+                        "Ambulance help",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: MediaQuery.of(context).size.width * 0.06),
                       ),
                       Text(
-                        "In case of any medical emergency call",
+                        "In case of medical emergency",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: MediaQuery.of(context).size.width * 0.035,
@@ -73,7 +72,7 @@ class AmbulanceEmergency extends StatelessWidget {
                             borderRadius: BorderRadius.circular(300)),
                         child: Center(
                           child: Text(
-                            "1 -1 -2 -2",
+                            "1 -0 -2",
                             style: TextStyle(
                                 color: Colors.red[300],
                                 fontWeight: FontWeight.bold,

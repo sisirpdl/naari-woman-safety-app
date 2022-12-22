@@ -76,8 +76,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     title: Text(snapshot.data == -1111
                         ? "Create SOS pin"
                         : "Change SOS pin"),
-                    subtitle:
-                        Text("SOS PIN is required to switch OFF the SOS alert"),
+                    subtitle: Text("SOS PIN is required to stop the alert"),
                     trailing: CircleAvatar(
                       radius: 7,
                       backgroundColor:
@@ -104,48 +103,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  "Notifications",
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
-              Expanded(child: Divider())
-            ],
-          ),
-          SwitchListTile(
-            onChanged: (val) {
-              setState(() {
-                switchValue = val;
-                controllSafeShake(val);
-              });
-            },
-            value: switchValue,
-            secondary: CircleAvatar(
-              backgroundColor: Colors.grey[200],
-              child: Center(
-                  child: Image.asset(
-                "assets/shake.png",
-                height: 24,
-              )),
-            ),
-            title: Text("Safe Shake"),
-            subtitle: Text("Switch ON to listen for device shake"),
-          ),
-          Divider(
-            indent: 40,
-            endIndent: 40,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Text(
-              "Safe Shake is the key feature for the app. It can be turned on to silently listens for the device shake. When the user feels uncomfortable or finds herself in a situation where sending SOS is the most viable descision. Then She can shake her phone rapidly to send SOS alert to specified contacts without opening the app.",
-              style: TextStyle(color: Colors.grey),
-            ),
-          ),
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Text(
                   "Application",
                   style: TextStyle(fontSize: 20),
                 ),
@@ -164,17 +121,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: Center(
                   child: Image.asset(
                 "assets/info.png",
-                height: 24,
-              )),
-            ),
-          ),
-          ListTile(
-            title: Text("Share"),
-            leading: CircleAvatar(
-              backgroundColor: Colors.grey[200],
-              child: Center(
-                  child: Image.asset(
-                "assets/share.png",
                 height: 24,
               )),
             ),

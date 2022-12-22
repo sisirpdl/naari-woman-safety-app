@@ -23,7 +23,7 @@ class DashAppbar extends StatelessWidget {
         child: Text(
           sweetSayings[quoteIndex][1],
           style: TextStyle(
-              color: Colors.black,
+              color: Color.fromRGBO(255, 0, 0, 1),
               fontWeight: FontWeight.bold,
               fontSize: MediaQuery.of(context).size.width * 0.06),
         ),

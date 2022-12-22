@@ -29,10 +29,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Amaan',
+      title: 'Naari',
       theme: ThemeData(
         fontFamily: GoogleFonts.poppins().fontFamily,
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       home: FutureBuilder(
           future: isAppOpeningForFirstTime(),

@@ -1,8 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './SadeWebView.dart';
-import './ArticleDesc.dart';
+import 'SafeWebView.dart';
 import '../../constants.dart';
 
 class SafeCarousel extends StatelessWidget {
@@ -39,35 +38,30 @@ class SafeCarousel extends StatelessWidget {
                               context,
                               SafeWebView(
                                   index: index,
-                                  title:
-                                      "Pakistani women inspiring the country",
-                                  url:
-                                      "https://gulfnews.com/world/asia/pakistan/womens-day-10-pakistani-women-inspiring-the-country-1.77696239"));
+                                  title: "Nari",
+                                  url: "https://narimag.com.np/"));
                         } else if (index == 1) {
                           navigateToRoute(
                               context,
                               SafeWebView(
                                   index: index,
-                                  title: "We have to end Violance",
-                                  url:
-                                      "https://plan-international.org/ending-violence/16-ways-end-violence-girls"));
-                        } else if (index == 2) {
-                          navigateToRoute(context, ArticleDesc(index: index));
+                                  title: "Global Woman Magazine",
+                                  url: "https://globalwomanmagazine.com/"));
                         } else {
                           navigateToRoute(
                               context,
                               SafeWebView(
                                   index: index,
-                                  title: "You are strong",
+                                  title: "UN Women Nepal",
                                   url:
-                                      "https://www.healthline.com/health/womens-health/self-defense-tips-escape"));
+                                      "https://asiapacific.unwomen.org/en/countries/nepal"));
                         }
                       },
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           image: DecorationImage(
-                              image: NetworkImage(imageSliders[index]),
+                              image: AssetImage(imageSliders[index]),
                               fit: BoxFit.cover),
                         ),
                         child: Container(

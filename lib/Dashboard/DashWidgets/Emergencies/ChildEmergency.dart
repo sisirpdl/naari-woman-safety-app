@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
-class ArmyEmergency extends StatelessWidget {
-  const ArmyEmergency({Key key}) : super(key: key);
+class ChildEmergency extends StatelessWidget {
+  const ChildEmergency({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class ArmyEmergency extends StatelessWidget {
         ),
         child: InkWell(
           onTap: () {
-            _callNumber("1717");
+            _callNumber("1098");
           },
           child: Container(
             height: 180,
@@ -26,9 +26,8 @@ class ArmyEmergency extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Color(0xFFFD8080),
-                  Color(0xFFFB8580),
-                  Color(0xFFFBD079),
+                  Color.fromRGBO(255, 0, 0, 1),
+                  Color.fromRGBO(143, 0, 255, 1)
                 ],
               ),
             ),
@@ -42,7 +41,7 @@ class ArmyEmergency extends StatelessWidget {
                       radius: 25,
                       child: Center(
                           child: Image.asset(
-                        "assets/army.png",
+                        "assets/hospital.png",
                         height: 35,
                       ))),
                   Expanded(
@@ -51,14 +50,14 @@ class ArmyEmergency extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "NACTA",
+                        "CWIN",
                         style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: MediaQuery.of(context).size.width * 0.06),
                       ),
                       Text(
-                        "National Counter Terrorism Authority",
+                        "Child Workers in Nepal",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize:
@@ -73,7 +72,7 @@ class ArmyEmergency extends StatelessWidget {
                             borderRadius: BorderRadius.circular(300)),
                         child: Center(
                           child: Text(
-                            "1 -7 -1 -7",
+                            "1 -0 -9 -8",
                             style: TextStyle(
                                 color: Colors.red[300],
                                 fontWeight: FontWeight.bold,

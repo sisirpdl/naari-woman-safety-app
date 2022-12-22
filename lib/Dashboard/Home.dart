@@ -1,11 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import './Articles%20-%20SafeCarousel/AllArticles.dart';
 import './DashWidgets/DashAppbar.dart';
 import './DashWidgets/Emergency.dart';
 import './DashWidgets/LiveSafe.dart';
-import './Articles%20-%20SafeCarousel/SafeCarousel.dart';
+import './Articlesfolder/SafeCarousel.dart';
 import './DashWidgets/SafeHome.dart';
 
 class Home extends StatefulWidget {
@@ -46,7 +45,7 @@ class _HomeState extends State<Home> {
             child: ListView(
               shrinkWrap: true,
               children: [
-                SafeCarousel(),
+                SafeHome(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Row(
@@ -60,17 +59,6 @@ class _HomeState extends State<Home> {
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                       ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => AllArticles(),
-                            ),
-                          );
-                        },
-                        child: Text("See More"),
-                      ),
                     ],
                   ),
                 ),
@@ -79,12 +67,20 @@ class _HomeState extends State<Home> {
                   padding:
                       const EdgeInsets.only(left: 16.0, bottom: 10, top: 10),
                   child: Text(
-                    "Explore LiveSafe",
+                    "Explore",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                 ),
                 LiveSafe(),
-                SafeHome(),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 16.0, bottom: 10, top: 10),
+                  child: Text(
+                    "Magazines and Articles",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                ),
+                SafeCarousel(),
                 SizedBox(
                   height: 50,
                 )

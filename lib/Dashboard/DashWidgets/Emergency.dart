@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './Emergencies/AmbulanceEmergency.dart';
-import './Emergencies/ArmyEmergency.dart';
+import 'Emergencies/ChildEmergency.dart';
 import './Emergencies/FirebrigadeEmergency.dart';
 import './Emergencies/PoliceEmergency.dart';
 
@@ -18,8 +18,8 @@ class Emergency extends StatelessWidget {
         children: [
           PoliceEmergency(),
           AmbulanceEmergency(),
+          ChildEmergency(),
           FireEmergency(),
-          ArmyEmergency()
         ],
       ),
     );

@@ -68,7 +68,7 @@ class _DashboardState extends State<Dashboard> {
               ),
             )
           : FloatingActionButton(
-              backgroundColor: Color(0xFFFB9580),
+              backgroundColor: Colors.pinkAccent[400],
               onPressed: () async {
                 if (alerted) {
                   int pin = (prefs.getInt('pin') ?? -1111);
@@ -173,15 +173,20 @@ class _DashboardState extends State<Dashboard> {
           msg: 'Alert Sent Successfully!',
           backgroundColor: Colors.green,
         );
+      } else if (state == smsSender.SmsMessageState.Delivered) {
+        return Fluttertoast.showToast(
+          msg: 'Message Delivered Successfully!',
+          backgroundColor: Colors.green,
+        );
       } else if (state == smsSender.SmsMessageState.Fail) {
         return Fluttertoast.showToast(
-          msg: 'Failure! Check your credits & Network Signals!',
+          msg: 'Failure! Check your data & Network Signals!',
           backgroundColor: Colors.red,
         );
       } else {
         return Fluttertoast.showToast(
-          msg: 'Failed to send SMS. Try Again!',
-          backgroundColor: Colors.red,
+          msg: 'Satark rahanuhola, sabadhan rahnuhola',
+          backgroundColor: Colors.blue,
         );
       }
     });
@@ -227,7 +232,7 @@ class _DashboardState extends State<Dashboard> {
           link = "Help Me! SOS \n$li";
         } else {
           Fluttertoast.showToast(
-              msg: "Contacts are being notified about false SOS.");
+              msg: "Contacts are being notified that you are safe.");
           link = "I am safe, track me here\n$li";
         }
 

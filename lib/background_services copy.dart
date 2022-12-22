@@ -2,9 +2,12 @@ import 'dart:async';
 
 import 'package:background_location/background_location.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_background_service/flutter_background_service.dart';
+import 'package:shake/shake.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:telephony/telephony.dart';
+import 'package:vibration/vibration.dart';
 import 'package:workmanager/workmanager.dart';
 
 // ** IMPORTANT INSTRUCTIONS **
@@ -80,7 +83,7 @@ void onStart() async {
   // ** IMPORTANT CONCEPT **
   // When working with isolates we need to comunicate data through ports because unlike
   // threads isolates does not share any memory.
-  // Here I am usong shared preferences to save data because
+  // Here I am using shared preferences to save data because
   // I dont need the data actively but need on specific time intervals.
   // So instead for passing it to a port and listen to it continously I had managed it
   // through shared preferences and worker plugin to get the updates after specific
@@ -96,7 +99,74 @@ void onStart() async {
   // Here I used screenShaker plugin to listen to shake events and I set the
   // threshold to 7, to avoid unnecessery shakes which can be cause by mistake
   // like when the phone is in purse or in hand while walking
+  String screenShake =
+      "Safe Shake is turned ON. Go to app settings to turn it off.";
+  ShakeDetector.autoStart(
 
+      // It deals with all the tests and then vibrates the phone so to let
+      // user know that shake was successful and sos has been generated
+      shakeThresholdGravity: 3,
+      onPhoneShake: () async {
+        print("Test 1");
+        if (await Vibration.hasVibrator()) {
+          print("Test 2");
+          if (await Vibration.hasCustomVibrationsSupport()) {
+            print("Test 3");
+            Vibration.vibrate(duration: 1000);
+          } else {
+            print("Test 4");
+            Vibration.vibrate();
+            await Future.delayed(Duration(milliseconds: 500));
+            Vibration.vibrate();
+          }
+          print("Test 5");
+        }
+        print("Test 6");
+        String link = '';
+        print("Test 7");
+        try {
+          double lat = _location.latitude;
+          double long = _location.longitude;
+          print("$lat ... $long");
+          print("Test 9");
+          link = "http://maps.google.com/?q=$lat,$long";
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          List<String> numbers = prefs.getStringList("numbers") ?? [];
+          String error;
+          try {
+            if (numbers.isEmpty) {
+              screenShake = "No contacs found, Please call 100 ASAP.";
+              debugPrint(
+                'No Contacts Found!',
+              );
+              return;
+            } else {
+              for (int i = 0; i < numbers.length; i++) {
+                //Here I used telephony to send sms messages to the saved contacts.
+                Telephony.backgroundInstance.sendSms(
+                    to: numbers[i], message: "Help Me! Track me here.\n$link");
+              }
+              prefs.setBool("alerted", true);
+              screenShake = "SOS alert Sent";
+            }
+          } on PlatformException catch (e) {
+            if (e.code == 'PERMISSION_DENIED') {
+              error = 'Please grant permission';
+              print('Error due to Denied: $error');
+            }
+            if (e.code == 'PERMISSION_DENIED_NEVER_ASK') {
+              error = 'Permission denied- please enable it from app settings';
+              print("Error : $error");
+            }
+          }
+          print("Test 10");
+          print(link);
+        } catch (e) {
+          print("Test 11");
+          print(e);
+        }
+      });
+  print("Test 12");
   // on initial call to onStart() this will call which brings the background
   // service to life
   service.setForegroundMode(true);
@@ -104,6 +174,11 @@ void onStart() async {
   // second unlike other worker managers
   Timer.periodic(Duration(seconds: 1), (timer) async {
     if (!(await service.isServiceRunning())) timer.cancel();
+
+    service.setNotificationInfo(
+      title: "Safe Shake activated!",
+      content: screenShake,
+    );
 
     service.sendData(
       {"current_date": DateTime.now().toIso8601String()},
