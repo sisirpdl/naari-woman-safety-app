@@ -1,7 +1,7 @@
 List<List<String>> sweetSayings = [
   ["I Don't hesiate to live a life", "I truely want."],
   ["My presence,", "lights up the whole room"],
-  ["For emergencies, I always walk with", "enough balance."],
+  ["I Don't hesiate to live a life", "I truely want."],
   ["The most alluring thing I", "can have is confidence"]
 ];
 

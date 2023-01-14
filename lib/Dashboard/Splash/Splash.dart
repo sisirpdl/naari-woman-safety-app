@@ -17,6 +17,22 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
 
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          content: const Text(
+              'Nari: Women"s Safety app collects location data to enable SMS alerting feature even when the app is closed or not in use.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Accept'),
+            ),
+          ],
+        ),
+      );
+    });
+
     Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
@@ -65,7 +81,7 @@ class _SplashState extends State<Splash> {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 140.0),
                 child: Text(
-                  "You deserve to be safe!",
+                  ":)",
                   style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
               ),

@@ -39,7 +39,6 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     super.initState();
     checkAlertSharedPreferences();
-    checkPermission();
   }
 
   SharedPreferences prefs;
